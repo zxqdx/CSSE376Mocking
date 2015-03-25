@@ -1,53 +1,53 @@
 using System;
 using Expedia;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using Rhino.Mocks;
 
 namespace ExpediaTest
 {
-	[TestFixture()]
+	[TestClass]
 	public class HotelTest
 	{
 		private Hotel targetHotel;
 		private readonly int NightsToRentHotel = 5;
 		private MockRepository mocks;
 		
-		[SetUp()]
-		public void SetUp()
+		[TestInitialize]
+		public void TestInitialize()
 		{
 			targetHotel = new Hotel(NightsToRentHotel);
 			mocks = new MockRepository();
 		}
 		
-		[Test()]
+		[TestMethod]
 		public void TestThatHotelInitializes()
 		{
 			Assert.IsNotNull(targetHotel);
 		}
 		
-		[Test()]
+		[TestMethod]
 		public void TestThatHotelHasCorrectBasePriceForOneDayStay()
 		{
 			var target = new Hotel(1);
 			Assert.AreEqual(45, target.getBasePrice());
 		}
 		
-		[Test()]
+		[TestMethod]
 		public void TestThatHotelHasCorrectBasePriceForTwoDayStay()
 		{
 			var target = new Hotel(2);
 			Assert.AreEqual(90, target.getBasePrice());
 		}
 		
-		[Test()]
+		[TestMethod]
 		public void TestThatHotelHasCorrectBasePriceForTenDaysStay()
 		{
 			var target = new Hotel(10);
 			Assert.AreEqual(450, target.getBasePrice());
 		}
 		
-		[Test()]
+		[TestMethod]
 		[ExpectedException(typeof(ArgumentOutOfRangeException))]
 		public void TestThatHotelThrowsOnBadLength()
 		{

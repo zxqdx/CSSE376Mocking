@@ -1,20 +1,20 @@
 
 using System;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Expedia;
 
 namespace ExpediaTest
 {
-	[TestFixture()]
+	[TestClass]
 	public class ServiceLocatorTest
 	{
-		[Test()]
+		[TestMethod]
 		public void TestThatServiceLocatorInitializes()
 		{
 			Assert.IsNotNull(new ServiceLocator());	
 		}
 		
-		[Test()]
+		[TestMethod]
 		public void TestThatServiceLocatorAvailableDiscountsReturnsExpectedDiscounts()
 		{
 			var firstDiscount = new Discount(0.05, 1000);
@@ -29,7 +29,7 @@ namespace ExpediaTest
 			Assert.AreEqual(2, locator.AvailableDiscounts.Count);
 		}
 		
-		[Test()]
+		[TestMethod]
 		public void TestThatServiceLocatorAvailableFlightsReturnsExpectedFlights()
 		{
 			var firstFlight = new Flight(DateTime.Today, DateTime.Today.AddDays(1), 500);
@@ -44,7 +44,7 @@ namespace ExpediaTest
 			Assert.AreEqual(2, locator.AvailableFlights.Count);
 		}
 		
-		[Test()]
+		[TestMethod]
 		public void TestThatServiceLocatorAvailableCarsReturnsExpectedCars()
 		{
 			var firstCar = new Car(5);

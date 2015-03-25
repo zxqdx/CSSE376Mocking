@@ -1,50 +1,50 @@
 using System;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Expedia;
 using Rhino.Mocks;
 
 namespace ExpediaTest
 {
-	[TestFixture()]
+	[TestClass]
 	public class CarTest
 	{	
 		private Car targetCar;
 		private MockRepository mocks;
 		
-		[SetUp()]
-		public void SetUp()
+		[TestInitialize]
+		public void TestInitialize()
 		{
 			targetCar = new Car(5);
 			mocks = new MockRepository();
 		}
 		
-		[Test()]
+		[TestMethod]
 		public void TestThatCarInitializes()
 		{
 			Assert.IsNotNull(targetCar);
 		}	
 		
-		[Test()]
+		[TestMethod]
 		public void TestThatCarHasCorrectBasePriceForFiveDays()
 		{
 			Assert.AreEqual(50, targetCar.getBasePrice()	);
 		}
 		
-		[Test()]
+		[TestMethod]
 		public void TestThatCarHasCorrectBasePriceForTenDays()
 		{
             var target = new Car(10);
 			Assert.AreEqual(80, target.getBasePrice());	
 		}
 		
-		[Test()]
+		[TestMethod]
 		public void TestThatCarHasCorrectBasePriceForSevenDays()
 		{
 			var target = new Car(7);
 			Assert.AreEqual(10*7*.8, target.getBasePrice());
 		}
 		
-		[Test()]
+		[TestMethod]
 		[ExpectedException(typeof(ArgumentOutOfRangeException))]
 		public void TestThatCarThrowsOnBadLength()
 		{

@@ -1,12 +1,12 @@
 
 using System;
 using System.Collections.Generic;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Expedia;
 
 namespace ExpediaTest
 {
-	[TestFixture()]
+	[TestClass]
 	public class BookingTest
 	{
 		private Car targetCar;
@@ -17,15 +17,15 @@ namespace ExpediaTest
 		private readonly DateTime EndDate = new DateTime(2009, 11, 30);
 		private readonly int NightsToRentHotel = 5;
 		
-		[SetUp()]
-		public void SetUp()
+		[TestInitialize]
+		public void TestInitialize()
 		{
 			targetCar = new Car(DaysToRentCar);
 			targetFlight = new Flight(StartDate, EndDate, 0);
 			targetHotel = new Hotel(NightsToRentHotel);
 		}
 		
-		[Test()]
+		[TestMethod]
 		public void TestThatObjectsAreBookings()
 		{
 			var list = new List<Booking>();

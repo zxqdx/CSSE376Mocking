@@ -1,13 +1,13 @@
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Expedia;
 
 namespace ExpediaTest
 {
-	[TestFixture()]
+	[TestClass]
 	public class DiscountTest
 	{
-		[Test()]
+		[TestMethod]
 		public void TestThatDiscountInitializes()
 		{
 			var target = new Discount(0.01, 1);
